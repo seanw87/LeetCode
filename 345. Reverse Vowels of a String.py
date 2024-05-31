@@ -1,7 +1,7 @@
 
 class Solution1:
     @staticmethod
-    def reverseVowels(self, s: str) -> str:
+    def reverseVowels(s: str) -> str:
         vowels = ['a', 'e', 'i', 'o', 'u']
         last_pos = str_len = len(s)
 

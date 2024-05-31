@@ -48,3 +48,20 @@ class Solution2:
         node = node.next
         cur.next = prev
         return self._reverse(node, cur)
+
+
+class Solution3:
+    @staticmethod
+    def reverseList(head: Optional[ListNode]) -> Optional[ListNode]:
+        prev = None
+        while head:
+            head.next, head, prev = prev, head.next, head
+        return prev
+
+
+print()
+ln = ListNode(1, next=ListNode(2, next=ListNode(3, next=ListNode(4, None))))
+res = Solution3.reverseList(ln)
+while res:
+    print(res.val)
+    res = res.next
