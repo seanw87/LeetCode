@@ -292,7 +292,7 @@ print(x, y)
 
 print()
 tl = [1, 2, 3, 4, 5, 6, 7, 8]
-print(tl[:2])
+print(tl[:2], tl[-1])
 print(tl[::-1][:2][::-1], tl[-2:])
 print(tl[2:3])
 print(tl[:100], tl[-100:])
@@ -313,3 +313,6 @@ print()
 l1 = []
 l2 = ['a', 'b', 'c']
 print([e[0]+e[1] for e in list(itertools.product(l1, l2))])
+
+
+print(list().append(1))
