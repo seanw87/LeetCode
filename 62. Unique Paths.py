@@ -70,7 +70,7 @@ class DFSMemoUsingAnnotationSolution:
 
 class DPSolution:
     """
-    Using state matrix
+    Using state transition matrix
     TC: O(m*n)
     SC: O(m*n)
     """

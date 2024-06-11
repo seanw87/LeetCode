@@ -1,14 +1,15 @@
 import itertools
 
+print('\n', 1)
 tmp_str = "abcdefg"
 res = [(tmp_str[i: i + 3]) for i in range(0, len(tmp_str), 3)]
 print(res)
 
-print()
+print('\n', 2)
 tmp_str = "abc"
 print(tmp_str[0:len(tmp_str) - 1])
 
-print()
+print('\n', 3)
 tmp_str = "abc"
 print(tmp_str[1])
 
@@ -16,7 +17,7 @@ print(tmp_str[1])
 # print(tmp_str1[0])
 
 
-print()
+print('\n', 4)
 tmp_str = "abcd"
 print(tmp_str[1:])
 
@@ -43,27 +44,27 @@ print(tmp_str[1:])
 # print("t3: ", t3, "variance: ", t3 - t2)
 
 
-print()
+print('\n', 5)
 tmp_str = "abcdefg"
-print(tmp_str[:3])
+print(tmp_str[1:])
 
-print()
+print('\n', 6)
 tmp_list = [1, 2, 3, 4, 5, 6]
 for i in range(len(tmp_list), 0, -1):
     print(i, tmp_list[i - 1])
 print(str(tmp_list))
 
-print()
+print('\n', 7)
 print("	".encode("UTF-8"))
 
-print()
+print('\n', 8)
 print('1'.isnumeric())
 
-print()
+print('\n', 9)
 fruits = ['apple', 'banana', 'cherry']
 print(fruits.pop(-1))
 
-print()
+print('\n', 10)
 num_list = [1, 2, 3, 4, 5, 6]
 for num in num_list:
     if num == 1:
@@ -79,15 +80,16 @@ print(num_list.pop())  # pop() == pop(-1)
 6 [2, 3, 4, 5, 6]
 """
 
-print()
+print('\n', 11)
 num_list = [1, 2, 3, 4, 5, 6]
 print(num_list[2:])
 print(num_list[2:-1])
 
-print()
+print('\n', 12)
 print(len(set('abcabc')))
 
-print()
+
+print('\n', 13)
 
 
 class tmp:
@@ -126,17 +128,17 @@ while prev:
 # print(prev.val, prev.next.val, prev.next.next.val, a1.val, a1.next.val)
 
 
-print()
+print('\n', 14)
 import math
 
 print(math.gcd(12, 4), math.lcm(12, 4))
 
-print()
+print('\n', 15)
 inputString = "abcedfg"
 # Using Extended Slicing to reverse a string
 print(inputString[::-1])
 
-print()
+print('\n', 16)
 # Python 3.7+ or CPython 3.6
 x = {1: 2, 3: 4, 4: 3, 2: 1, 0: 0}
 res = {k: v for k, v in sorted(x.items(), key=lambda item: item[1], reverse=True)}
@@ -160,7 +162,7 @@ my_list = [1, 2, 3, 4]
 # Unpacking list into four arguments
 fun(*my_list)
 
-print()
+print('\n', 17)
 from collections import ChainMap
 
 defaults = {'color': 'red', 'user': 'guest'}
@@ -170,7 +172,7 @@ combined = ChainMap(usermap, defaults)
 print(combined['color'])  # yellow - left has higher priority
 print(combined['user'])  # admin - left has higher priority
 
-print()
+print('\n', 18)
 from collections import Counter
 
 c = Counter()  # a new, empty counter
@@ -179,7 +181,7 @@ c = Counter({'red': 4, 'blue': 2})  # a new counter from a mapping
 c = Counter(cats=4, dogs=8)  # a new counter from keyword args
 print(c.values())
 
-print()
+print('\n', 19)
 contestants = {'Randy Orton': 'Red', 'Dwayne Johnson': 'Blue'}
 contestants['Jhon Cena'] = 'Red'
 contestants['Dave Bautista'] = 'Blue'
@@ -188,12 +190,12 @@ print(contestants)
 # for python 3.7+ the output is {'Randy Orton': 'Red', 'Jhon Cena': 'Red', 'Dave Bautista': 'Blue'}
 
 
-print()
+print('\n', 20)
 list1 = [1, 2, 3, 4]
 list2 = [1, 2, 3, 4]
 print(list1 == list2)
 
-print()
+print('\n', 21)
 x = 1
 
 
@@ -205,7 +207,7 @@ def add():
 
 add()
 
-print()
+print('\n', 22)
 
 
 def dfs():
@@ -216,17 +218,17 @@ def dfs():
 count = [0]
 dfs()
 
-print()
+print('\n', 23)
 print(1 + (1 > 2))
 
-print()
+print('\n', 24)
 from collections import deque
 
 dq = deque([1, 2, 3, 4, 5])
 print(sum(dq))
 
 
-print()
+print('\n', 25)
 x = [8, 2, 3, 4, 1, 5]
 y = [6, 3, 7, 2, 1]
 set_y = set(y)
@@ -235,7 +237,7 @@ b = next((a for a in x if a in set_y), None)
 print(b)
 
 
-print()
+print('\n', 26)
 print("3 % 2: ", 3 % 2,
       "\n3 // 2: ", 3 // 2,
       "\n3/2: ", 3/2,
@@ -243,18 +245,18 @@ print("3 % 2: ", 3 % 2,
       "\nmath.ceil(3/2): ", math.ceil(3/2))
 
 
-print()
+print('\n', 27)
 print(max([(1, 2), (2, 1)]))
 # (2, 1)
 
 
-print()
+print('\n', 28)
 l = [1, 2, 3]
 a = l.pop(0)
 print(a, l)
 
 
-print()
+print('\n', 29)
 rooms = [[1, 2], [3, 4]]
 visited = set([1])
 to_visit = {0}
@@ -262,11 +264,11 @@ to_visit |= set(rooms[0])-visited
 print("to_visit: ", to_visit)
 
 
-print()
+print('\n', 30)
 print(set(range(3)))
 
 
-print()
+print('\n', 31)
 x = [[0, 1], [2, 3]]
 x.remove([2, 3])
 y = [1, 2, 3]
@@ -274,23 +276,23 @@ y.remove(3)
 print(x, y)
 
 
-print()
+print('\n', 32)
 print('------')
 t = zip([[1, 2], [2, 3]], [4, 5])
 for x, y in t:
     print(x, y)
 
 
-print()
+print('\n', 33)
 print(set(tuple([1, 2])))
 
 
-print()
+print('\n', 34)
 x, y = (1, 2)
 print(x, y)
 
 
-print()
+print('\n', 35)
 tl = [1, 2, 3, 4, 5, 6, 7, 8]
 print(tl[:2], tl[-1])
 print(tl[::-1][:2][::-1], tl[-2:])
@@ -299,17 +301,17 @@ print(tl[:100], tl[-100:])
 print(tl.pop())
 
 
-print()
+print('\n', 36)
 ml = ['a', 'b', 'c']
 print([e + 'b' for e in ml])
 
 
-print()
+print('\n', 37)
 txt = ''
 print(txt[1:])
 
 
-print()
+print('\n', 38)
 l1 = []
 l2 = ['a', 'b', 'c']
 print([e[0]+e[1] for e in list(itertools.product(l1, l2))])
