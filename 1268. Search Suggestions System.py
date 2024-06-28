@@ -74,3 +74,23 @@ class Solution2:
             node = node.children[char]
             result.append(node.get())
         return result
+
+
+class Solution3:
+    """
+    Use BinarySearch
+    """
+
+    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+        sorted_list = sorted(products)
+        start, end = 0, len(sorted_list) - 1
+        result = []
+
+        for i, char in enumerate(searchWord):
+            while start <= end and (i >= len(sorted_list[start]) or sorted_list[start][i] != char):
+                start += 1
+            while start <= end and (i >= len(sorted_list[end]) or sorted_list[end][i] != char):
+                end -= 1
+
+            result.append(sorted_list[start:min(start + 3, end + 1)])
+            return result
