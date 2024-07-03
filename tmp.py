@@ -1,4 +1,6 @@
+import collections
 import itertools
+import logging
 
 print('\n', 1)
 tmp_str = "abcdefg"
@@ -87,7 +89,6 @@ print(num_list[2:-1])
 
 print('\n', 12)
 print(len(set('abcabc')))
-
 
 print('\n', 13)
 
@@ -227,7 +228,6 @@ from collections import deque
 dq = deque([1, 2, 3, 4, 5])
 print(sum(dq))
 
-
 print('\n', 25)
 x = [8, 2, 3, 4, 1, 5]
 y = [6, 3, 7, 2, 1]
@@ -236,14 +236,12 @@ set_y = set(y)
 b = next((a for a in x if a in set_y), None)
 print(b)
 
-
 print('\n', 26)
 print("3 % 2: ", 3 % 2,
       "\n3 // 2: ", 3 // 2,
-      "\n3/2: ", 3/2,
-      "\nmath.floor(3/2): ", math.floor(3/2),
-      "\nmath.ceil(3/2): ", math.ceil(3/2))
-
+      "\n3/2: ", 3 / 2,
+      "\nmath.floor(3/2): ", math.floor(3 / 2),
+      "\nmath.ceil(3/2): ", math.ceil(3 / 2))
 
 print('\n', 27)
 print(max([(1, 2), (2, 1)]))
@@ -255,18 +253,15 @@ l = [1, 2, 3]
 a = l.pop(0)
 print(a, l)
 
-
 print('\n', 29)
 rooms = [[1, 2], [3, 4]]
 visited = set([1])
 to_visit = {0}
-to_visit |= set(rooms[0])-visited
+to_visit |= set(rooms[0]) - visited
 print("to_visit: ", to_visit)
-
 
 print('\n', 30)
 print(set(range(3)))
-
 
 print('\n', 31)
 x = [[0, 1], [2, 3]]
@@ -275,22 +270,18 @@ y = [1, 2, 3]
 y.remove(3)
 print(x, y)
 
-
 print('\n', 32)
 print('------')
 t = zip([[1, 2], [2, 3]], [4, 5])
 for x, y in t:
     print(x, y)
 
-
 print('\n', 33)
 print(set(tuple([1, 2])))
-
 
 print('\n', 34)
 x, y = (1, 2)
 print(x, y)
-
 
 print('\n', 35)
 tl = [1, 2, 3, 4, 5, 6, 7, 8]
@@ -300,21 +291,40 @@ print(tl[2:3])
 print(tl[:100], tl[-100:])
 print(tl.pop())
 
-
 print('\n', 36)
 ml = ['a', 'b', 'c']
 print([e + 'b' for e in ml])
-
 
 print('\n', 37)
 txt = ''
 print(txt[1:])
 
-
 print('\n', 38)
 l1 = []
 l2 = ['a', 'b', 'c']
-print([e[0]+e[1] for e in list(itertools.product(l1, l2))])
+print([e[0] + e[1] for e in list(itertools.product(l1, l2))])
 
+print((0b11 >> 1) + (0b11 & 1))
 
-print(list().append(1))
+t = collections.defaultdict(bool)
+t['a'] = 1
+print(1 in t)
+
+t = collections.defaultdict(bool)
+print(t)
+
+logging.basicConfig(filename='app.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+logger.info("hahaha")
+
+print()
+print(bin(10))
+
+print()
+intervals = [[-52, 31], [-73, -26], [82, 97], [-65, -11], [-62, -49], [95, 99], [58, 95], [-31, 49], [66, 98], [-63, 2],
+             [30, 47], [-40, -26]]
+print(sorted(intervals))
+for i in range(len(intervals), 0, -1):
+    print(i)
+
