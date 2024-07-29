@@ -328,3 +328,8 @@ print(sorted(intervals))
 for i in range(len(intervals), 0, -1):
     print(i)
 
+
+print()
+import os
+path = "a/b/c/d"
+print(os.path.basename(os.path.normpath(path)))
