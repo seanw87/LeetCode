@@ -328,8 +328,40 @@ print(sorted(intervals))
 for i in range(len(intervals), 0, -1):
     print(i)
 
-
 print()
 import os
+
 path = "a/b/c/d"
 print(os.path.basename(os.path.normpath(path)))
+
+print()
+tstr = "abc"
+print(tstr)
+# tstr[1] = 'z'
+# print(tstr)
+print(list(tstr))
+
+print()
+inputString = "abcedfg"
+# Slicing
+print(inputString[0:2])
+# Extended Slicing
+print(inputString[0:6:2])
+v = -123
+vstr = str(v)
+print(int('-' + vstr[:0:-1]))
+
+print()
+a = [i ** 2 for i in range(0, 100)]  # or [math.pow(i, 2) for i in range(0, 100)]
+a = [int(math.pow(i, 2)) for i in range(0, 100)]
+print(a)
+
+print()
+n = 7
+def ifPrime(a):
+    for i in range(2, a // 2 + 1):
+        if a % i == 0:
+            return False
+    return True
+print(ifPrime(n))
+
