@@ -1,7 +1,9 @@
 from typing import List
 
 """
-Most intuitive solution is to calculate the length of each section between [0...0...0), and pick the biggest
+Most intuitive solution: {a:1..1}0{b:1..1}0{c:1..1}0{d:1...1}, sum up the lengths of 1s by turns
+
+Most brutal solution is to calculate the length of each section between [0...0...0), and pick the biggest
 Iterate the num array 
 →   if meet first 0, set prev to current index; 
     if meet second 0, set cur to current index;
@@ -10,7 +12,8 @@ Iterate the num array
 →   Now we have the duration for the calculation
 →   if meet 1, check a lot of boundaries
 
-Most concise solution(solution2): Just calculate the step offset (max_result = right - step_offset)
+Most concise solution(solution2) - very hard to understand: 
+Just calculate the step offset (max_result = right - step_offset)
 Iterate the num array
 →   if meet 0, step i follows the current index;
 →   if meet 1, step i stops at the left 1;
@@ -19,6 +22,29 @@ Iterate the num array
     when moving on with these 1s, i should follow up until it meets 0, then buffer k needs decreasing
     when reaching the last 0, which means the new 1s will be longer than the previous one
 """
+
+
+class Solution3:
+    @staticmethod
+    def longestSubarray(nums: List[int]) -> int:
+        prev_len, cur_len = 0, 0
+        max_len = 0
+        zero_exist = False
+
+        for num in nums:
+            if num == 1:
+                cur_len += 1
+                max_len = max(max_len, cur_len + prev_len)
+            elif num == 0:
+                prev_len = cur_len
+                cur_len = 0
+                zero_exist = True
+
+        if not zero_exist:
+            max_len -= 1
+
+        return max_len
+
 
 class Solution1:
     @staticmethod
@@ -56,6 +82,7 @@ class Solution2:
     """
     sliding window
     """
+
     @staticmethod
     def longestSubarray(nums: List[int]) -> int:
         k = 1
