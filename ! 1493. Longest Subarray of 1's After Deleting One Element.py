@@ -1,5 +1,24 @@
 from typing import List
 
+"""
+Most intuitive solution is to calculate the length of each section between [0...0...0), and pick the biggest
+Iterate the num array 
+→   if meet first 0, set prev to current index; 
+    if meet second 0, set cur to current index;
+    next, set prev to the index of cur, set cur to current index
+    repeat...
+→   Now we have the duration for the calculation
+→   if meet 1, check a lot of boundaries
+
+Most concise solution(solution2): Just calculate the step offset (max_result = right - step_offset)
+Iterate the num array
+→   if meet 0, step i follows the current index;
+→   if meet 1, step i stops at the left 1;
+→   if meet latter 0, step i follows the offset between the current index;
+→   if meet latter 1, a buffer k is needed since latter 1s may be longer than previous one;
+    when moving on with these 1s, i should follow up until it meets 0, then buffer k needs decreasing
+    when reaching the last 0, which means the new 1s will be longer than the previous one
+"""
 
 class Solution1:
     @staticmethod
@@ -35,9 +54,7 @@ print(Solution1.longestSubarray([0, 1, 1, 1, 0, 1, 1, 0, 1]))
 
 class Solution2:
     """
-    sliding window:
-    i: 1 before first 0
-    j: 1 after second 0
+    sliding window
     """
     @staticmethod
     def longestSubarray(nums: List[int]) -> int:
