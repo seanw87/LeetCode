@@ -358,10 +358,17 @@ print(a)
 
 print()
 n = 7
+
+
 def ifPrime(a):
     for i in range(2, a // 2 + 1):
         if a % i == 0:
             return False
     return True
+
+
 print(ifPrime(n))
+
+print()
+import random
 
