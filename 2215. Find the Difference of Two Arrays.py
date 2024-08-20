@@ -1,6 +1,19 @@
 from typing import List
 
 
+class Solution2:
+    """
+    use python set.difference()
+    """
+
+    @staticmethod
+    def findDifference(nums1: List[int], nums2: List[int]) -> List[List[int]]:
+        nums1_set = set(nums1)
+        nums2_set = set(nums2)
+
+        return [nums1_set.difference(nums2_set), nums2_set.difference(nums1_set)]
+
+
 class Solution1:
     """
     traditional way
@@ -25,16 +38,3 @@ class Solution1:
 
 
 print(Solution1.findDifference([1, 2, 3], [2, 4, 6]))
-
-
-class Solution2:
-    """
-    use python set.difference()
-    """
-    @staticmethod
-    def findDifference(nums1: List[int], nums2: List[int]) -> List[List[int]]:
-        nums1_set = set(nums1)
-        nums2_set = set(nums2)
-
-        return [nums1_set.difference(nums2_set), nums2_set.difference(nums1_set)]
-

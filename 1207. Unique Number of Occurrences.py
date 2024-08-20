@@ -1,6 +1,37 @@
 import collections
 from typing import List
 
+"""
+collections.Counter(list)
+"""
+
+
+class Solution2:
+    """
+    use python3 collections.Counter()
+    not very efficient
+    """
+
+    @staticmethod
+    def uniqueOccurrences(arr: List[int]) -> bool:
+        c = collections.Counter(arr)
+        return len(c) == len(set(c.values()))
+
+
+class Solution3:
+    """
+    use python3 collections.Counter() with another way(directly check the counts of each element)
+    """
+
+    @staticmethod
+    def uniqueOccurrences(arr: List[int]) -> bool:
+        seen = set()
+        for freq in collections.Counter(arr).values():
+            if freq in seen:
+                return False
+            seen.add(freq)
+        return True
+
 
 class Solution1:
     @staticmethod
@@ -20,28 +51,3 @@ class Solution1:
             return True
         else:
             return False
-
-
-class Solution2:
-    """
-    use python3 collections.Counter()
-    not very efficient
-    """
-    @staticmethod
-    def uniqueOccurrences(arr: List[int]) -> bool:
-        c = collections.Counter(arr)
-        return len(c) == len(set(c.values()))
-
-
-class Solution3:
-    """
-    use python3 collections.Counter() with another way(directly check the counts of each element)
-    """
-    @staticmethod
-    def uniqueOccurrences(arr: List[int]) -> bool:
-        seen = set()
-        for freq in collections.Counter(arr).values():
-            if freq in seen:
-                return False
-            seen.add(freq)
-        return True
