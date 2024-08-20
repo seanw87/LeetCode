@@ -1,5 +1,9 @@
 from typing import List
 
+"""
+This method is called "Prefix Sum"
+"""
+
 
 class Solution:
     @staticmethod
