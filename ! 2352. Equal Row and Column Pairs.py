@@ -1,6 +1,41 @@
 import collections
 from typing import List
 
+"""
+Store the occurrence of each row into a dictionary
+Pay attention to the usage difference between a dictionary and a list:
+tmp_list = [[1], [2], [3]]
+for i in tmp_list:
+    print(i)
+    
+tmp_dict = {1: 1, 2: 2, 3: 3}
+for k in tmp_dict:
+    print(k, tmp_dict[k])
+"""
+class Solution2:
+    """
+    use defaultdict() to create and initialize the dictionary automatically
+    """
+
+    @staticmethod
+    def equalPairs(grid: List[List[int]]) -> int:
+        m = collections.defaultdict(int)  # initialize the dict with default value type (here is int)
+        mcol = collections.defaultdict(list)  # initialize the dict with default value type (here is list)
+        res = 0
+
+        for row in grid:
+            m[str(row)] += 1
+            for i in range(len(row)):
+                mcol[i].append(row[i])
+
+        for ele in mcol:
+            if str(mcol[ele]) in m:
+                res += m[str(mcol[ele])]
+        return res
+
+
+print(Solution2.equalPairs([[3, 2, 1], [1, 7, 6], [2, 7, 7]]))
+
 
 class Solution1:
     @staticmethod
@@ -39,28 +74,3 @@ class Solution1:
 
 
 print(Solution1.equalPairs([[3, 2, 1], [1, 7, 6], [2, 7, 7]]))
-
-
-class Solution2:
-    """
-    use defaultdict() to create and initialize the dictionary automatically
-    """
-
-    @staticmethod
-    def equalPairs(grid: List[List[int]]) -> int:
-        m = collections.defaultdict(int)  # initialize the dict with default value type (here is int)
-        mcol = collections.defaultdict(list)  # initialize the dict with default value type (here is list)
-        res = 0
-
-        for row in grid:
-            m[str(row)] += 1
-            for i in range(len(row)):
-                mcol[i].append(row[i])
-
-        for ele in mcol:
-            if str(mcol[ele]) in m:
-                res += m[str(mcol[ele])]
-        return res
-
-
-print(Solution2.equalPairs([[3, 2, 1], [1, 7, 6], [2, 7, 7]]))
