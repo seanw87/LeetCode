@@ -1,3 +1,24 @@
+"""
+Stack way is opposite to the normal way in terms of the direction of iteraction
+"""
+
+
+class Solution2:
+    """
+    Stack way
+    """
+
+    @staticmethod
+    def removeStars(s: str) -> str:
+        ans = []
+        for i in s:
+            if i == "*":
+                ans.pop()
+            else:
+                ans.append(i)
+        return "".join(ans)
+
+
 class Solution1:
     """
     traditional iterating way
@@ -22,18 +43,3 @@ class Solution1:
 
 
 print(Solution1.removeStars("leet**cod*e"))
-
-
-class Solution2:
-    """
-    """
-
-    @staticmethod
-    def removeStars(s: str) -> str:
-        ans = []
-        for i in s:
-            if i == "*":
-                ans.pop()
-            else:
-                ans.append(i)
-        return "".join(ans)
