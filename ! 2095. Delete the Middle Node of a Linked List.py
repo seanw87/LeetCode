@@ -2,11 +2,34 @@
 import math
 from typing import Optional
 
+"""
+The length of the Linked List cannot be naturally obtained(need iterating the Link List)
+Fast-slow Pointer would be the best choice
+"""
 
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
+
+class Solution2:
+    """
+    slow-fast pointer
+    """
+
+    @staticmethod
+    def deleteMiddle(head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head.next:
+            return None
+
+        fast_pointer = head.next.next  # control the pointer location
+        slow_pointer = head
+        while fast_pointer and fast_pointer.next:
+            fast_pointer = fast_pointer.next.next
+            slow_pointer = slow_pointer.next
+        slow_pointer.next = slow_pointer.next.next  # ! "step over" operation(.next is a reference)
+        return head
 
 
 class Solution1:
@@ -29,23 +52,4 @@ class Solution1:
         for i in range(middle - 1):
             ll = ll.next
         ll.next = ll.next.next
-        return head
-
-
-class Solution2:
-    """
-    slow-fast pointer
-    """
-
-    @staticmethod
-    def deleteMiddle(head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head.next:
-            return None
-
-        fast_pointer = head.next.next  # control the pointer location
-        slow_pointer = head
-        while fast_pointer and fast_pointer.next:
-            fast_pointer = fast_pointer.next.next
-            slow_pointer = slow_pointer.next
-        slow_pointer.next = slow_pointer.next.next
         return head
