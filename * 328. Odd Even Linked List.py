@@ -5,7 +5,7 @@ from typing import Optional
 difference between:
     (1) ll = head.next 
     (2) ll.next = ll.next.next
-The first won't change the Linked List itself, ll just got the reference of the Linked List
+The first won't change the Linked List itself, the reference of the Linked List is assigned to ll
 The second will change the Linked List, since the reference of the next node of the Linked List has been 
 redirected to other nodes(next next node in this case)
 
