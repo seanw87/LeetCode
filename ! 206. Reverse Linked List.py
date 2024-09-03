@@ -1,7 +1,18 @@
 # Definition for singly-linked list.
 from typing import Optional
 
+"""
+Solution 1: intermediate variable
+while head:
+    cur = head  # intermediate variable - record initial address of head
+    head = head.next  # change the address of head to head.next
+    cur.next = prev  # change the address of cur.next will ALSO CHANGE the address of head.next
+    prev = cur
 
+Solution 2: multi assignment
+while head:
+    head.next, head, prev = prev, head.next, head  # head.next → head → prev
+"""
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
