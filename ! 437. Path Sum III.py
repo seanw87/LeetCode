@@ -10,11 +10,63 @@ class TreeNode:
         self.right = right
 
 
+"""
+Characteristics of accumulated sum: check if any of the accumulated sum: 
+    a, a+b, a+...+n, 
+    b, b+c, b+...+n, 
+    c, c+d, c+...+n,
+    ...
+is equal to t,  we can exchange time complexity with space complexity:
+use a dict to store the status of each (a+...+k - t),
+for the later recursion, if (a+...+m - t) is in the dict, 
+then it indicates the sum is satisfied with the target value
+"""
+
+
+class Solution3:
+    """
+    Best solution.
+    TC: O(n)
+    cache = {pathSum: 1}
+    if node a.val + b.val + c.val - target in cache, then
+    """
+
+    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
+        if not root:
+            return 0
+
+        # define global result and path
+        self.result = 0
+        cache = {0: 1}
+
+        self.dfs(root, targetSum, 0, cache)
+
+        return self.result
+
+    def dfs(self, root, target, currPathSum, cache):
+        if root is None:
+            return
+
+        # calculate currPathSum and required oldPathSum
+        currPathSum += root.val
+        oldPathSum = currPathSum - target
+        # update result and cache
+        self.result += cache.get(oldPathSum, 0)
+        cache[currPathSum] = cache.get(currPathSum, 0) + 1
+
+        # dfs breakdown
+        self.dfs(root.left, target, currPathSum, cache)
+        self.dfs(root.right, target, currPathSum, cache)
+        # when move to a different branch, the currPathSum is no longer available, hence remove one.
+        cache[currPathSum] -= 1
+
+
 class WrongSolution:
     """
     WRONG SOLUTION!!!
     --- List in recursion seems global
     """
+
     @staticmethod
     def pathSum(root: Optional[TreeNode], targetSum: int) -> int:
         if not root:
@@ -50,6 +102,7 @@ class Solution2:
     Very unefficient in TC
     Efficient in SC
     """
+
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
         if not root:
             return 0
@@ -77,43 +130,6 @@ class Solution2:
 
         dfs(root, targetSum)
         return self.numTarget
-
-
-class Solution3:
-    """
-    Best solution.
-    TC: O(n)
-    cache = {pathSum: 1}
-    if node a.val + b.val + c.val - target in cache, then
-    """
-    def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
-        if not root:
-            return 0
-
-        # define global result and path
-        self.result = 0
-        cache = {0: 1}
-
-        self.dfs(root, targetSum, 0, cache)
-
-        return self.result
-
-    def dfs(self, root, target, currPathSum, cache):
-        if root is None:
-            return
-
-        # calculate currPathSum and required oldPathSum
-        currPathSum += root.val
-        oldPathSum = currPathSum - target
-        # update result and cache
-        self.result += cache.get(oldPathSum, 0)
-        cache[currPathSum] = cache.get(currPathSum, 0) + 1
-
-        # dfs breakdown
-        self.dfs(root.left, target, currPathSum, cache)
-        self.dfs(root.right, target, currPathSum, cache)
-        # when move to a different branch, the currPathSum is no longer available, hence remove one.
-        cache[currPathSum] -= 1
 
 
 tree = TreeNode(val=10,
