@@ -55,7 +55,7 @@ class Solution2:
             lcnt = lrCnt + 1 if lr == 2 else 0
             dfs(node.left, lcnt, 1)
 
-            # the node gois to the right, then if the parent is from left direction, then path + 1
+            # the node goes to the right, then if the parent is from left direction, then path + 1
             rcnt = lrCnt + 1 if lr == 1 else 0
             dfs(node.right, rcnt, 2)
 
