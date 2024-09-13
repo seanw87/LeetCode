@@ -9,6 +9,26 @@ class TreeNode:
         self.right = right
 
 
+"""
+Brilliant! Instead of building a path, suppose current node is the LCA, which means under this node,
+there'll be p and q existed.
+"""
+class Solution2:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if root in (None, p, q):
+            return root
+
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+
+        if left is None:  # if another node(e.g. q) is node p's descendant, then the result is p
+            return right
+        elif right is None:  # same as above
+            return left
+        else:  # if both node p and q are found, which means they are from another parent node, which is root
+            return root
+
+
 class Solution:
     ppath = ""
     qpath = ""
@@ -49,22 +69,6 @@ class Solution:
         #             print(plist[i])
         #             return TreeNode(val=plist[i])
         # # ↑ O(n^2) needs to be optimized
-
-
-class Solution2:
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        if root in (None, p, q):
-            return root
-
-        left = self.lowestCommonAncestor(root.left, p, q)
-        right = self.lowestCommonAncestor(root.right, p, q)
-
-        if left is None:  # if another node(e.g. q) is node p's descendant, then the result is p
-            return right
-        elif right is None:  # same as above
-            return left
-        else:  # if both node p and q are found, which means they are from another parent node, which is root
-            return root
 
 
 tree = TreeNode(val=3,
