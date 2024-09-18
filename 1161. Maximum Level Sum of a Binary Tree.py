@@ -32,6 +32,9 @@ class Solution:
         return res
 
 
+"""
+Build a 2-d array, then use array.index(max(array)) to get the index
+"""
 class Solution2:
     """
     DFS
