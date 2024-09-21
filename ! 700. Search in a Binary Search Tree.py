@@ -1,6 +1,9 @@
 from typing import Optional
 
-# Definition for a binary tree node.
+"""
+Definition for a binary tree: parent.child.left.val < parent.val < parent.child.right.val
+"""
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
