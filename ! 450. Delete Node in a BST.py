@@ -7,7 +7,10 @@ class TreeNode:
         self.left = left
         self.right = right
 
-
+"""
+Notes: How to manipulate a BST and then return the root node:
+get the return of parent.left and parent.right, then return root
+"""
 class Solution:
     def deleteNode(self, root: Optional[TreeNode], key: int) -> Optional[TreeNode]:
         if not root:
