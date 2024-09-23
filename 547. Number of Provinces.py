@@ -1,6 +1,8 @@
 from typing import List
 
-
+"""
+Graphs problems usually can be solved with DFS, BFS and Iteration methods 
+"""
 class DfsSolution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
         if not isConnected:
