@@ -1,37 +1,9 @@
 from typing import List
 import collections
 
-
-class NotEfficientSolution:
-    """
-    NOT Efficient: each recursion TC: O(n), total TC: O(n^2)
-    cause: the routes in connections contains repeated nodes(cities)
-    resolution: map the routes into {node: [associated_node1, ...]}
-    """
-    ans = 0
-
-    def minReorder(self, n: int, connections: List[List[int]]) -> int:
-        if not connections:
-            return 0
-
-        visited_routes = []
-
-        def dfs(city):
-            for route in connections:
-                if city in route:
-                    if route not in visited_routes:
-                        visited_routes.append(route)
-
-                        if city == route[0]:
-                            self.ans += 1
-                            dfs(route[1])
-                        else:
-                            dfs(route[0])
-
-        dfs(0)
-        return self.ans
-
-
+"""
+start from (n, 0), then (m, n), then (l, m), ... so to build a dictionary to store the route map of each cities
+"""
 class DfsSolution:
     def minReorder(self, n: int, connections: List[List[int]]) -> int:
         adjList = collections.defaultdict(list)  # no need to initialize
@@ -61,6 +33,7 @@ class DfsWithUVSolution:
     """
     build the graph first
     """
+
     def __init__(self):
         self.res = None
 
@@ -82,6 +55,36 @@ class DfsWithUVSolution:
 
         dfs(0, -1)
         return self.res
+
+
+class NotEfficientSolution:
+    """
+    NOT Efficient: each recursion TC: O(n), total TC: O(n^2)
+    cause: the routes in connections contains repeated nodes(cities)
+    resolution: map the routes into {node: [associated_node1, ...]}
+    """
+    ans = 0
+
+    def minReorder(self, n: int, connections: List[List[int]]) -> int:
+        if not connections:
+            return 0
+
+        visited_routes = []
+
+        def dfs(city):
+            for route in connections:
+                if city in route:
+                    if route not in visited_routes:
+                        visited_routes.append(route)
+
+                        if city == route[0]:
+                            self.ans += 1
+                            dfs(route[1])
+                        else:
+                            dfs(route[0])
+
+        dfs(0)
+        return self.ans
 
 
 print(DfsSolution().minReorder(3, [[0, 1], [1, 3], [2, 3], [4, 0], [4, 5]]))
