@@ -2,6 +2,23 @@ from typing import List
 import collections
 
 
+"""
+NOTE: to build a 2-dimensional dictionary
+"""
+class BrilliantSolution:
+    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+        graph = collections.defaultdict(collections.defaultdict)
+        for (x, y), val in zip(equations, values):
+            graph[x][y] = val
+            graph[y][x] = 1.0 / val
+        for k in graph:
+            graph[k][k] = 1.0
+            for i in graph[k]:
+                for j in graph[k]:
+                    graph[i][j] = graph[i][k] * graph[k][j]
+        return [graph[x].get(y, -1.0) for x, y in queries]
+
+
 class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
         graph = collections.defaultdict(list)
@@ -37,19 +54,5 @@ class Solution:
         return [findQuery(q) for q in queries]
 
 
-class BrilliantSolution:
-    def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
-        graph = collections.defaultdict(collections.defaultdict)
-        for (x, y), val in zip(equations, values):
-            graph[x][y] = val
-            graph[y][x] = 1.0 / val
-        for k in graph:
-            graph[k][k] = 1.0
-            for i in graph[k]:
-                for j in graph[k]:
-                    graph[i][j] = graph[i][k] * graph[k][j]
-        return [graph[x].get(y, -1.0) for x, y in queries]
-
-
 print(Solution().calcEquation([["a", "b"], ["b", "c"]], [2.0, 3.0],
-                            [["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"]]))
+                              [["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"]]))
