@@ -2,7 +2,9 @@ from typing import List
 from collections import deque
 import math
 
-
+"""
+Note: generate the rotten list first
+"""
 class BfsSolution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
         rows = len(grid)
