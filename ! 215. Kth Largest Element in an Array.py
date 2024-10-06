@@ -3,6 +3,24 @@ import heapq
 import random
 
 
+class HeapqEfficientSolution:
+    """
+    heapq: push k elements to heapq then push the rest of elements(heappush)
+    and pop the smallest at the same time(heappushpop)
+    """
+
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        h = []
+
+        for n in nums:
+            if len(h) == k:
+                heapq.heappushpop(h, n)
+            else:
+                heapq.heappush(h, n)
+
+        return h[0]
+
+
 class SortedSolution:
     """
     Most obvious solution: use Sorted function
@@ -26,23 +44,6 @@ class HeapqSolution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         heapq.heapify(nums)
         return list(heapq.nlargest(k, nums))[k - 1]
-
-
-class HeapqEfficientSolution:
-    """
-    heapq: push k elements to heapq then push the rest of elements(heappush) and pop the smallest at the same time(heappushpop)
-    """
-
-    def findKthLargest(self, nums: List[int], k: int) -> int:
-        h = []
-
-        for n in nums:
-            if len(h) == k:
-                heapq.heappushpop(h, n)
-            else:
-                heapq.heappush(h, n)
-
-        return h[0]
 
 
 class QuickSortSolution:
